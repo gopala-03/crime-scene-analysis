@@ -1,0 +1,43 @@
+<?php
+// Database connection code goes here
+
+// Get the case ID from the URL parameter
+$case_id = $_GET['id'];
+
+// Query the database to retrieve the case details
+$sql = "SELECT * FROM cases WHERE id = $case_id";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+
+// Display the case details
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>View Case</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<h1 style="font-size: xx-large; color: bisque; font-family:Verdana, Geneva, Tahoma, sans-serif">Case Details</h1><br><br>
+		<p><strong style="font-size: x-large; color: bisque;">Case Name:</strong> <?php echo $row['case_name']; ?></p>
+		<p><strong style="font-size: x-large; color: bisque;">Case Type:</strong> <?php echo $row['case_type']; ?></p>
+		<p><strong style="font-size: x-large; color: bisque;">Victim Name:</strong> <?php echo $row['victim_name']; ?></p>
+		<p><strong style="font-size: x-large; color: bisque;">Accused Name:</strong> <?php echo $row['accused_name']; ?></p>
+		<p><strong style="font-size: x-large; color: bisque;">Place of the Crime:</strong> <?php echo $row['place_of_crime']; ?></p>
+		<p><strong style="font-size: x-large; color: bisque;">Date:</strong> <?php echo $row['date']; ?></p>
+		<p><strong style="font-size: x-large; color: bisque;">Time:</strong> <?php echo $row['time']; ?></p>
+		<p><strong style="font-size: x-large; color: bisque;">Client Name:</strong> <?php echo $row['client_name']; ?></p>
+		<p><strong style="font-size: x-large; color: bisque;">Accusation:</strong> <?php echo $row['accusation']; ?></p>
+		<p><strong style="font-size: x-large; color: bisque;">Prosecution Argument:</strong> <?php echo $row['prosecution_argument']; ?></p>
+		<p><strong style="font-size: x-large; color: bisque;">Suspects:</strong> <?php echo $row['suspects']; ?></p>
+		<p><strong style="font-size: x-large; color: bisque;">Hearings:</strong> <?php echo $row['hearings']; ?></p>
+		<p><strong style="font-size: x-large; color: bisque;">Defense Arguments:</strong> <?php echo $row['defense_arguments']; ?></p>
+		<p><strong style="font-size: x-large; color: bisque;">Judgement:</strong> <?php echo $row['judgement']; ?></p><br><br>
+		<div class="adv">
+		<a href="advocate.php" style="--clr:bisque;"><span>Back to Advocate Profile</span><i></i></a>
+        </div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,907 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: consolas;
+}
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    gap: 40px;
+    background: #355463;
+    overflow: hidden;
+}
+.adv
+{
+    position: relative;
+    min-height: -100vh;
+    transform: rotate(0deg);
+    font-family: 'Poppins', sans-serif;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    justify-content: center; 
+}
+.adv h1
+{
+    position: relative;
+    bottom: 100px;
+}
+.adv h2
+{
+    position: relative;
+    bottom: 50px;
+}
+.adv a
+{
+    position: relative;
+    background: #444;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    padding: 10px 30px;
+    transition: 0.5s;
+}
+.adv a:hover
+{
+    letter-spacing: 0.25em;
+    background: var(--clr);
+    color: var(--clr);
+    box-shadow: 0 0 35px var(--clr);
+}
+.adv a::before
+{
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: #27282c;
+}
+.adv a span
+{
+    position: relative;
+    z-index: 1;
+}
+.adv a i
+{
+    position: absolute;
+    inset: 0;
+    display: block;
+}
+.adv a i::before
+{
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 100%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: #27282c;
+    border: 2px solid var(--clr);
+    transition: 0.5s;
+}
+.adv a:hover i::before
+{
+    left: 0%;
+    transform: translateX(-50%) rotate(45deg);
+    box-shadow: 40px 39px var(--clr);
+}
+.adv a i::after
+{
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: #27282c;
+    border: 2px solid var(--clr);
+    transition: 0.5s;
+}
+.adv a:hover i::after
+{
+    left: 100%;
+    transform: translateX(50%) rotate(-45deg);
+    box-shadow: 38px -39px var(--clr);
+}
+.adv .button
+{
+    position: relative;
+    min-height: auto;
+    bottom: -100px;
+    transform: rotate(0deg);
+    font-family: 'Poppins', sans-serif;
+    flex-direction: column;
+    gap: 40px;
+    align-items: baseline;
+    justify-content: baseline; 
+}
+.adv .button a
+{
+    position: relative;
+    background: #444;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    padding: 10px 30px;
+    transition: 0.5s;
+}
+.adv .button a:hover
+{
+    letter-spacing: 0.25em;
+    background: var(--clr);
+    color: var(--clr);
+    box-shadow: 0 0 35px var(--clr);
+}
+.adv .button a::before
+{
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: #27282c;
+}
+.adv .button a span
+{
+    position: relative;
+    z-index: 1;
+}
+.adv .button a i
+{
+    position: absolute;
+    inset: 0;
+    display: block;
+}
+.adv .button a i::before
+{
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 100%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: #27282c;
+    border: 2px solid var(--clr);
+    transition: 0.5s;
+}
+.adv .button a:hover i::before
+{
+    left: 0%;
+    transform: translateX(-50%) rotate(45deg);
+    box-shadow: 40px 39px var(--clr);
+}
+.adv .button a i::after
+{
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: #27282c;
+    border: 2px solid var(--clr);
+    transition: 0.5s;
+}
+.adv .button a:hover i::after
+{
+    left: 100%;
+    transform: translateX(50%) rotate(-45deg);
+    box-shadow: 38px -39px var(--clr);
+}
+.road
+{
+    position: relative;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    transform: rotate(-15deg);
+}
+.road::before
+{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #fff, #fff 50%, transparent 50%, transparent 100%);
+    background-size: 50px;
+    animation: animate_road 0.125s linear infinite;
+}
+@keyframes animate_road
+{
+    0%
+    {
+        background-position: 50px 0;
+    }
+    100%
+    {
+        background-position: 0px 0;
+    }
+}
+.button
+{
+    min-height: -100vh;
+    transform: rotate(15deg);
+    font-family: 'Poppins', sans-serif;
+    flex-direction: column;
+    gap: 40px;
+}
+.button a
+{
+    position: relative;
+    background: #444;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    padding: 10px 30px;
+    transition: 0.5s;
+}
+.button a:hover
+{
+    letter-spacing: 0.25em;
+    background: var(--clr);
+    color: var(--clr);
+    box-shadow: 0 0 35px var(--clr);
+}
+.button a::before
+{
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: #27282c;
+}
+.button a span
+{
+    position: relative;
+    z-index: 1;
+}
+.button a i
+{
+    position: absolute;
+    inset: 0;
+    display: block;
+}
+.button a i::before
+{
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 100%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: #27282c;
+    border: 2px solid var(--clr);
+    transition: 0.5s;
+}
+.button a:hover i::before
+{
+    left: 0%;
+    transform: translateX(-50%) rotate(45deg);
+    box-shadow: 40px 39px var(--clr);
+}
+.button a i::after
+{
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: #27282c;
+    border: 2px solid var(--clr);
+    transition: 0.5s;
+}
+.button a:hover i::after
+{
+    left: 100%;
+    transform: translateX(50%) rotate(-45deg);
+    box-shadow: 38px -39px var(--clr);
+}
+.box
+{
+    transform: rotate(15deg);
+    position: relative;
+    width: 380px;
+    height: 420px;
+    background: #1c1c1c;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.box::before
+{
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent, transparent, #45f3ff, #45f3ff, #45f3ff);
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+}
+.box::after
+{
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent, transparent, #45f3ff, #45f3ff, #45f3ff);
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -3s;
+}
+.borderLine
+{
+    position: absolute;
+    top: 0;
+    inset: 0;
+}
+.borderLine::before
+{
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent, transparent, #ff2770, #ff2770, #ff2770);
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -1.5s;
+}
+.borderLine::after
+{
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent, transparent, #ff2770, #ff2770, #ff2770);
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -4.5s;
+}
+@keyframes animate
+{
+    0%
+    {
+        transform: rotate(0deg);
+    }
+    100%
+    {
+        transform: rotate(360deg);
+    }
+}
+.box form
+{
+    position: absolute;
+    inset: 4px;
+    background: #222;
+    padding: 50px 40px;
+    border-radius: 8px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+.box form h2
+{
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+.box form .inputBox
+{
+    position: relative;
+    width: 300px;
+    margin-top: 35px;
+}
+.box form .inputBox input
+{
+    position: relative;
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    color: #23242a;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    z-index: 10;
+}
+.box form .inputBox span
+{
+    position: absolute;
+    left: 0;
+    padding: 20px 10px 10px;
+    pointer-events: none;
+    color: #8f8f8f;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+}
+.box form .inputBox input:valid ~ span,
+.box form .inputBox input:focus ~ span
+{
+    color: #fff;
+    font-size: 0.75em;
+    transform: translateY(-34px);
+}
+.box form .inputBox i
+{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: 0.5s;
+    pointer-events: none;
+}
+.box form .inputBox input:valid ~ i,
+.box form .inputBox input:focus ~ i
+{
+    height: 44px;
+}
+.box form .links
+{
+    display: flex;
+    justify-content: space-between;
+}
+.box form .links a
+{
+    margin: 10px 0;
+    font-size: 0.75em;
+    color: #8f8f8f;
+    text-decoration: none;
+}
+.box form .links a:hover,
+.box form .links a:nth-child(2)
+{
+    color: #fff;   
+}
+.box form input[type="submit"]
+{
+    border: none;
+    outline: none;
+    padding: 9px 25px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 0.9em;
+    border-radius: 4px;
+    font-weight: 600;
+    width: 100px;
+    margin-top: 10px;
+}
+
+.police
+{
+    left: -100px;
+    position: absolute;
+    width: 200px;
+    height: 80px;
+    background: #3f4c54;
+    border-radius: 10px;
+    box-shadow: -10px 10px rgba(0, 0, 0, 0.05);
+    transform-style: preserve-3d;
+    perspective: 800px;
+    z-index: 10;
+    animation: animate_police_car 5s linear infinite;
+}
+.police:nth-child(2)
+{
+    left: 200px;
+    animation-delay: -2.5s;
+}
+@keyframes animate_police_car
+{
+    0%
+    {
+        transform: translateX(20px) translateY(-50px);
+    }
+    25%
+    {
+        transform: translateX(-10px) translateY(0px);
+    }
+    50%
+    {
+        transform: translateX(20px) translateY(50px);
+    }
+    75%
+    {
+        transform: translateX(-10px) translateY(0px);
+    }
+    100%
+    {
+        transform: translateX(20px) translateY(-50px);
+    }
+}
+.police::before
+{
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 2px;
+    width: 5px;
+    height: 15px;
+    border-radius: 2px;
+    background: #fc3c25;
+    box-shadow: 0 42px #fc3c25;
+}
+.police::after
+{
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 2px;
+    width: 6px;
+    height: 16px;
+    border-radius: 2px;
+    background: #fff;
+    box-shadow: 0 44px #fff;
+}
+.police span
+{
+    position: absolute;
+    inset: 5px 10px;
+    background: #475b66;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.police span::before
+{
+    content: '911';
+    position: absolute;
+    top: 50%;
+    left: 48%;
+    transform: translate(-50%, -50%) rotate(90deg);
+    color: #333;
+    font-size: 0.5cm;
+    font-weight: 1000;
+    letter-spacing: 0.1cm;
+    z-index: 10;
+}
+.police span::after
+{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    width: 6px;
+    height: 10px;
+    background: #29282b;
+    box-shadow: 0 -10px #1f5fff,0 10px #df1b25;
+}
+.police span b
+{
+    position: absolute;
+    inset: 0 30px;
+    background: #344650;
+    border-radius: 10px;
+}
+.police span b::before
+{
+    content: '';
+    position: absolute;
+    inset: 6px 25px;
+    background: #ebebeb;
+    border-radius: 5px;
+}
+.police span b::after
+{
+    content: '';
+    position: absolute;
+    inset: 0px 58px;
+    background: #ebebeb;
+}
+.police span i
+{
+    position: absolute;
+    inset: 0;
+}
+.police span i::before
+{
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: 20px;
+    width: 40px;
+    height: 5px;
+    background: #ebebeb;
+    transform-origin: right;
+    transform: rotate(15deg);
+    box-shadow: 100px 34px #ebebeb;
+}
+.police span i::after
+{
+    content: '';
+    position: absolute;
+    bottom: 7px;
+    left: 20px;
+    width: 40px;
+    height: 5px;
+    background: #ebebeb;
+    transform-origin: right;
+    transform: rotate(-15deg);
+    box-shadow: 100px -34px #ebebeb;
+}
+.light_beam
+{
+    position: absolute;
+    top: 5px;
+    right: -2px;
+    width: 10px;
+    height: 70px;
+    background: #0002;
+    border-radius: 15px;
+    transform-style: preserve-3d;
+}
+.light_beam::before
+{
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 150px;
+    height: 16px;
+    background: linear-gradient(90deg, #fff6, transparent);
+    transform-origin: left;
+    transform: perspective(500px) rotateY(-50deg);
+}
+.light_beam::after
+{
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 150px;
+    height: 16px;
+    background: linear-gradient(90deg, #fff6, transparent);
+    transform-origin: left;
+    transform: perspective(500px) rotateY(-50deg);
+}
+.police h4
+{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    color: #fff;
+    text-transform: uppercase;
+    z-index: 10;
+    transform: translateY(-50%) rotate(90deg) scale(0.75);
+}
+.police h3
+{
+    position: absolute;
+    top: 50%;
+    right: -2%;
+    color: #fff;
+    text-transform: uppercase;
+    z-index: 10;
+    transform: translateY(-50%) rotate(270deg) scale(0.75);
+}
+.police .side_mirror
+{
+    position: absolute;
+    inset: 0;
+}
+.police .side_mirror::before
+{
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: 40px;
+    width: 5px;
+    height: 10px;
+    background: #ebebeb;
+    border-top-right-radius: 10px;
+}
+.police .side_mirror::after
+{
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: 40px;
+    width: 5px;
+    height: 10px;
+    background: #ebebeb;
+    border-bottom-right-radius: 10px;
+}
+.burgular
+{
+    right: 50px;
+    position: absolute;
+    width: 200px;
+    height: 80px;
+    background: #f4b603;
+    border-radius: 10px;
+    box-shadow: -10px 10px rgba(0, 0, 0, 0.1);
+    transform-style: preserve-3d;
+    perspective: 800px;
+    z-index: 10;
+    animation: animate_burgular 5s linear infinite;
+    animation-delay: -5s;
+}
+@keyframes animate_burgular
+{
+    0%
+    {
+        transform: translateX(20px) translateY(20px);
+    }
+    25%
+    {
+        transform: translateX(-50px) translateY(0px);
+    }
+    50%
+    {
+        transform: translateX(20px) translateY(-20px);
+    }
+    75%
+    {
+        transform: translateX(50px) translateY(0px);
+    }
+    100%
+    {
+        transform: translateX(20px) translateY(20px);
+    }
+}
+.burgular::before
+{
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 2px;
+    width: 5px;
+    height: 15px;
+    border-radius: 2px;
+    background: #fc3c25;
+    box-shadow: 0 42px #fc3c25;
+}
+.burgular::after
+{
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 2px;
+    width: 6px;
+    height: 16px;
+    border-radius: 2px;
+    background: #fff;
+    box-shadow: 0 44px #fff;
+}
+.burgular span
+{
+    position: absolute;
+    inset: 5px 10px;
+    background: #fdd206;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.burgular span::before
+{
+    content: 'Taxi';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+    background: #fff;
+    padding: 2px;
+    font-size: 0.5cm;
+    font-weight: 1000;
+    letter-spacing: 0.1cm;
+    text-transform: uppercase;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px #0005;
+    z-index: 1000;
+}
+.burgular span b
+{
+    position: absolute;
+    inset: 0 30px;
+    background: #111;
+    border-radius: 10px;
+}
+.burgular span b::before
+{
+    content: '';
+    position: absolute;
+    inset: 6px 25px;
+    background: #fdd206;
+    border-radius: 5px;
+}
+.burgular span b::after
+{
+    content: '';
+    position: absolute;
+    inset: 0px 58px;
+    background: #fdd206;
+}
+.burgular span i
+{
+    position: absolute;
+    inset: 0;
+}
+.burgular span i::before
+{
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: 20px;
+    width: 40px;
+    height: 5px;
+    background: #fdd206;
+    transform-origin: right;
+    transform: rotate(15deg);
+    box-shadow: 100px 34px #fdd206;
+}
+.burgular span i::after
+{
+    content: '';
+    position: absolute;
+    bottom: 7px;
+    left: 20px;
+    width: 40px;
+    height: 5px;
+    background: #fdd206;
+    transform-origin: right;
+    transform: rotate(-15deg);
+    box-shadow: 100px -34px #fdd206;
+}
+.burgular .side_mirror
+{
+    position: absolute;
+    inset: 0;
+}
+.burgular .side_mirror::before
+{
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: 40px;
+    width: 5px;
+    height: 10px;
+    background: #fdd206;
+    border-top-right-radius: 10px;
+}
+.burgular .side_mirror::after
+{
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: 40px;
+    width: 5px;
+    height: 10px;
+    background: #fdd206;
+    border-bottom-right-radius: 10px;
+}

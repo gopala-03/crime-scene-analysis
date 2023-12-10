@@ -1,0 +1,98 @@
+<?php
+//get the Case Name from the query string
+if(isset($_GET['case_name'])){
+  $case_name = $_GET['case_name'];
+  
+  //connect to database and retrieve case details
+  $servername = "localhost";
+  $username = "username";
+  $password = "password";
+  $dbname = "myDB";
+
+  //create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  
+  //check connection
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+  
+  //prepare and execute SQL query to retrieve case details
+  $stmt = $conn->prepare("SELECT * FROM cases WHERE case_name = ?");
+  $stmt->bind_param("s", $case_name);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  
+  //display case details in a table
+  if ($result->num_rows > 0) {
+    echo "<table><tr><th>Case Name</th><th>Case Type</th><th>Victim Name</th><th>Accused Name</th><th>Place of the Crime</th><th>Date</th><th>Time</th><th>Client Name</th><th>Accusation</th><th>Prosecution Argument</th><th>Suspects</th><th>Hearings</th><th>Defense Arguments</th><th>Judgement</th></tr>";
+    while($row = $result->fetch_assoc()) {
+      echo "<tr><td>".$row["case_name"]."</td><td>".$row["case_type"]."</td><td>".$row["victim_name"]."</td><td>".$row["accused_name"]."</td><td>".$row["place_of_crime"]."</td><td>".$row["date"]."</td><td>".$row["time"]."</td><td>".$row["client_name"]."</td><td>".$row["accusation"]."</td><td>".$row["prosecution_argument"]."</td><td>".$row["suspects"]."</td><td>".$row["hearings"]."</td><td>".$row["defense_arguments"]."</td><td>".$row["judgement"]."</td></tr>";
+    }
+    echo "</table>";
+  } else {
+    echo "No results found.";
+  }
+  
+  //close database connection
+  $stmt->close();
+  $conn->close();
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search Results</title>
+</head>
+<body>
+	<h1 style="font-size: xx-large; color: bisque; font-family:Verdana, Geneva, Tahoma, sans-serif">Search Result</h1>
+	<?php
+		// connect to the database
+		$conn = mysqli_connect("localhost", "root", "", "lawyer_management_system");
+
+		// check connection
+		if (!$conn) {
+			die("Connection failed: " . mysqli_connect_error());
+		}
+
+		// get the case name from the URL
+		$case_name = $_GET["case_name"];
+
+		// construct the SQL query
+		$sql = "SELECT * FROM cases WHERE case_name='$case_name'";
+
+		// execute the query
+		$result = mysqli_query($conn, $sql);
+
+		// check if any rows were returned
+		if (mysqli_num_rows($result) > 0) {
+			// output data of each row
+			while($row = mysqli_fetch_assoc($result)) {
+				echo "<h1>" . $row["case_name"] . "</h2>";
+				echo "<p><strong style="font-size: large; color: bisque;">Case Type:</strong> " . $row["case_type"] . "</p>";
+				echo "<p><strong style="font-size: large; color: bisque;">Victim Name:</strong> " . $row["victim_name"] . "</p>";
+				echo "<p><strong style="font-size: large; color: bisque;">Accused Name:</strong> " . $row["accused_name"] . "</p>";
+				echo "<p><strong style="font-size: large; color: bisque;">Place of the Crime:</strong> " . $row["place_of_crime"] . "</p>";
+				echo "<p><strong style="font-size: large; color: bisque;">Date:</strong> " . $row["date"] . "</p>";
+				echo "<p><strong style="font-size: large; color: bisque;">Time:</strong> " . $row["time"] . "</p>";
+				echo "<p><strong style="font-size: large; color: bisque;">Client Name:</strong> " . $row["client_name"] . "</p>";
+				echo "<p><strong style="font-size: large; color: bisque;">Accusation:</strong> " . $row["accusation"] . "</p>";
+				echo "<p><strong style="font-size: large; color: bisque;">Prosecution Argument:</strong> " . $row["prosecution_argument"] . "</p>";
+				echo "<p><strong style="font-size: large; color: bisque;">Suspects:</strong> " . $row["suspects"] . "</p>";
+				echo "<p><strong style="font-size: large; color: bisque;">Hearings:</strong> " . $row["hearings"] . "</p>";
+				echo "<p><strong style="font-size: large; color: bisque;">Defense Arguments:</strong> " . $row["defense_arguments"] . "</p>";
+				echo "<p><strong style="font-size: large; color: bisque;">Judgement:</strong> " . $row["judgement"] . "</p>";
+			}
+		} else {
+			echo "No results found.";
+		}
+
+		// close the database connection
+		mysqli_close($conn);
+	?>
+    
+    <div class="adv">
+		<a href="advocate.php" style="--clr:bisque;"><span>Back to Advocate Profile</span><i></i></a>
+    </div>
+</body>
+</html>

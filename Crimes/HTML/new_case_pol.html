@@ -1,0 +1,109 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  // Retrieve form data
+  $case_name = $_POST['case_name'];
+  $case_type = $_POST['case_type'];
+  $victim_name = $_POST['victim_name'];
+  $accused_name = $_POST['accused_name'];
+  $place_of_crime = $_POST['place_of_crime'];
+  $date = $_POST['date'];
+  $time = $_POST['time'];
+  $suspects = $_POST['suspects'];
+  $evidence = $_POST['evidence'];
+  $culprit = $_POST['culprit'];
+
+  // Upload images
+  $victim_img = uploadImage('victim_img', 'uploads/victims/');
+  $accused_img = uploadImage('accused_img', 'uploads/accused/');
+  $culprit_img = uploadImage('culprit_img', 'uploads/culprits/');
+
+  // Insert form data into database
+  // ...
+
+  // Redirect to view page
+  header('Location: view_case_pol.php?case_name=' . urlencode($case_name));
+  exit();
+}
+
+function uploadImage($input_name, $upload_dir) {
+  // Check if file was uploaded
+  if (isset($_FILES[$input_name]) && $_FILES[$input_name]['error'] == UPLOAD_ERR_OK) {
+    // Generate unique filename
+    $ext = pathinfo($_FILES[$input_name]['name'], PATHINFO_EXTENSION);
+    $filename = uniqid() . '.' . $ext;
+
+    // Move uploaded file to upload directory
+    move_uploaded_file($_FILES[$input_name]['tmp_name'], $upload_dir . $filename);
+
+    // Return uploaded file path
+    return $upload_dir . $filename;
+  } else {
+    // No file uploaded
+    return '';
+  }
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>New Case Form</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">
+	<h1 style="font-size: xx-large; color: bisque; font-family:Verdana, Geneva, Tahoma, sans-serif">New Case Form</h1><br><br>
+	<form action="new_case_pol.php" method="POST" enctype="multipart/form-data">
+		<label for="case_name" style="font-size: large; color: bisque;">Case Name:</label>
+		<input type="text" name="case_name" required>
+
+		<label for="case_type" style="font-size: large; color: bisque;">Case Type:</label>
+		<select name="case_type">
+			<option value="murder">Murder</option>
+			<option value="theft">Theft</option>
+			<option value="fraud">Fraud</option>
+			<option value="assault">Assault</option>
+			<option value="kidnapping">Kidnapping</option>
+			<option value="other">Other</option>
+		</select><br><br>
+
+		<label for="victim_name" style="font-size: large; color: bisque;">Victim Name:</label>
+		<input type="text" name="victim_name" required>
+
+		<label for="accused_name" style="font-size: large; color: bisque;">Accused Name:</label>
+		<input type="text" name="accused_name" required><br><br>
+
+		<label for="place_of_crime" style="font-size: large; color: bisque;">Place of the Crime:</label>
+		<input type="text" name="place_of_crime" required>
+
+		<label for="date" style="font-size: large; color: bisque;">Date:</label>
+		<input type="date" name="date" required>
+
+		<label for="time" style="font-size: large; color: bisque;">Time:</label>
+		<input type="time" name="time" required><br><br>
+
+		<label for="suspects" style="font-size: large; color: bisque;">Suspects:</label>
+		<textarea name="suspects" rows="4" cols="50"></textarea><br><br>
+
+		<label for="evidence" style="font-size: large; color: bisque;">Evidence:</label>
+		<textarea name="evidence" rows="4" cols="50"></textarea><br><br>
+
+		<label for="culprit" style="font-size: large; color: bisque;">Culprit:</label>
+		<textarea name="culprit" rows="4" cols="50"></textarea><br><br>
+
+		<label for="victim_image" style="font-size: large; color: bisque;">Victim Image:</label>
+		<input type="file" name="victim_image"><br><br>
+
+		<label for="accused_image" style="font-size: large; color: bisque;">Accused Image:</label>
+		<input type="file" name="accused_image"><br><br>
+
+		<label for="culprit_image" style="font-size: large; color: bisque;">Culprit Image:</label>
+		<input type="file" name="culprit_image"><br><br>
+		
+        <div class="adv">
+            <a style="--clr: bisque;"><button type="submit"><span style="color: aliceblue; font-size: large;">Submit</span><i></i></button></a>
+            <a href="view_case_pol.php" class="view-button" style="--clr:bisque;"><span>View</span><i></i></a>
+        </div>
+	</form>
+    </div>
+</body>
+</html>

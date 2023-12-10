@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>View Case</title>
+</head>
+<body>
+	<?php
+		// retrieve the form data using $_POST superglobal
+		$case_name = $_POST['case_name'];
+		$case_type = $_POST['case_type'];
+		$victim_name = $_POST['victim_name'];
+		$accused_name = $_POST['accused_name'];
+		$crime_place = $_POST['crime_place'];
+		$date = $_POST['date'];
+		$time = $_POST['time'];
+		$suspects = $_POST['suspects'];
+		$evidence = $_POST['evidence'];
+		$culprit = $_POST['culprit'];
+		
+		// display the form data
+		echo "<h1 style="font-size: xx-large; color: bisque; font-family:Verdana, Geneva, Tahoma, sans-serif">Case Details</h1><br><br>";
+		echo "<p style="font-size: x-large; color: bisque;"><b>Case Name:</b> ".$case_name."</p>";
+		echo "<p style="font-size: x-large; color: bisque;"><b>Case Type:</b> ".$case_type."</p>";
+		echo "<p style="font-size: x-large; color: bisque;"><b>Victim Name:</b> ".$victim_name."</p>";
+		echo "<p style="font-size: x-large; color: bisque;"><b>Accused Name:</b> ".$accused_name."</p>";
+		echo "<p style="font-size: x-large; color: bisque;"><b>Place of Crime:</b> ".$crime_place."</p>";
+		echo "<p style="font-size: x-large; color: bisque;"><b>Date:</b> ".$date."</p>";
+		echo "<p style="font-size: x-large; color: bisque;"><b>Time:</b> ".$time."</p>";
+		echo "<p style="font-size: x-large; color: bisque;"><b>Suspects:</b> ".$suspects."</p>";
+		echo "<p style="font-size: x-large; color: bisque;"><b>Evidence:</b> ".$evidence."</p>";
+		echo "<p style="font-size: x-large; color: bisque;"><b>Culprit:</b> ".$culprit."</p>";
+		
+		// display uploaded images
+		if(isset($_FILES['victim_image']) && $_FILES['victim_image']['error'] == 0) {
+			$target_dir = "uploads/";
+			$target_file = $target_dir . basename($_FILES["victim_image"]["name"]);
+			move_uploaded_file($_FILES["victim_image"]["tmp_name"], $target_file);
+			echo "<p style="font-size: x-large; color: bisque;"><b>Victim Image:</b><br><img src='".$target_file."' width='200'></p>";
+		}
+		
+		if(isset($_FILES['accused_image']) && $_FILES['accused_image']['error'] == 0) {
+			$target_dir = "uploads/";
+			$target_file = $target_dir . basename($_FILES["accused_image"]["name"]);
+			move_uploaded_file($_FILES["accused_image"]["tmp_name"], $target_file);
+			echo "<p style="font-size: x-large; color: bisque;"><b>Accused Image:</b><br><img src='".$target_file."' width='200'></p>";
+		}
+		
+		if(isset($_FILES['culprit_image']) && $_FILES['culprit_image']['error'] == 0) {
+			$target_dir = "uploads/";
+			$target_file = $target_dir . basename($_FILES["culprit_image"]["name"]);
+			move_uploaded_file($_FILES["culprit_image"]["tmp_name"], $target_file);
+			echo "<p style="font-size: x-large; color: bisque;"><b>Culprit Image:</b><br><img src='".$target_file."' width='200'></p>";
+		}
+	?>
+	<br>
+    <div class="adv">
+		<a href="police.php" style="--clr:bisque;"><span>Back to Police Officials Page</span><i></i></a>
+    </div>
+</body>
+</html>

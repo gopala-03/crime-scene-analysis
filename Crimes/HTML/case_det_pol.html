@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Case Details</title>
+</head>
+<body>
+	<h1 style="font-size: xx-large; color: bisque; font-family:Verdana, Geneva, Tahoma, sans-serif">Case Details</h1><br><br>
+	<?php
+		$servername = "localhost";
+		$username = "username";
+		$password = "password";
+		$dbname = "database";
+
+		// Create connection
+		$conn = new mysqli($servername, $username, $password, $dbname);
+		// Check connection
+		if ($conn->connect_error) {
+			die("Connection failed: " . $conn->connect_error);
+		}
+
+		$case_name = $_POST["case_name"];
+
+		$sql = "SELECT * FROM cases WHERE case_name='$case_name'";
+		$result = $conn->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				echo "<p><strong style="font-size: x-large; color: bisque;">Case Name:</strong> " . $row["case_name"] . "</p>";
+				echo "<p><strong style="font-size: x-large; color: bisque;">Case Type:</strong> " . $row["case_type"] . "</p>";
+				echo "<p><strong style="font-size: x-large; color: bisque;">Victim Name:</strong> " . $row["victim_name"] . "</p>";
+				echo "<p><strong style="font-size: x-large; color: bisque;">Accused Name:</strong> " . $row["accused_name"] . "</p>";
+				echo "<p><strong style="font-size: x-large; color: bisque;">Place of the Crime:</strong> " . $row["place_of_crime"] . "</p>";
+				echo "<p><strong style="font-size: x-large; color: bisque;">Date:</strong> " . $row["date"] . "</p>";
+				echo "<p><strong style="font-size: x-large; color: bisque;">Time:</strong> " . $row["time"] . "</p>";
+				echo "<p><strong style="font-size: x-large; color: bisque;">Suspects:</strong> " . $row["suspects"] . "</p>";
+				echo "<p><strong style="font-size: x-large; color: bisque;">Evidence:</strong> " . $row["evidence"] . "</p>";
+				echo "<p><strong style="font-size: x-large; color: bisque;">Culprit:</strong> " . $row["culprit"] . "</p>";
+				echo "<p><strong style="font-size: x-large; color: bisque;">Victim Image:</strong></p>";
+				echo "<img src='uploads/" . $row["victim_image"] . "' width='200px'>";
+				echo "<p><strong style="font-size: x-large; color: bisque;">Accused Image:</strong></p>";
+				echo "<img src='uploads/" . $row["accused_image"] . "' width='200px'>";
+				echo "<p><strong style="font-size: x-large; color: bisque;">Culprit Image:</strong></p>";
+				echo "<img src='uploads/" . $row["culprit_image"] . "' width='200px'>";
+			}
+		} else {
+			echo "No results found for Case Name: " . $case_name;
+		}
+		$conn->close();
+	?>
+
+	<br>
+	<div class="adv">
+		<a href="advocate.php" style="--clr:bisque;"><span>Back to Advocate Profile</span><i></i></a>
+    </div>
+</body>
+</html>

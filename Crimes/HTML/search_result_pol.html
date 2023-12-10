@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search Result</title>
+</head>
+<body>
+	<h1 style="font-size: xx-large; color: bisque; font-family:Verdana, Geneva, Tahoma, sans-serif">Search Result</h1>
+	<?php
+		// Retrieve the search query from the form
+		$search_query = $_GET['case_name'];
+
+		// Connect to the database
+		$servername = "localhost";
+		$username = "username";
+		$password = "password";
+		$dbname = "database_name";
+
+		// Create connection
+		$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+		// Check connection
+		if (!$conn) {
+			die("Connection failed: " . mysqli_connect_error());
+		}
+
+		// Retrieve the details of the case based on the search query
+		$sql = "SELECT * FROM cases WHERE case_name = '$search_query'";
+		$result = mysqli_query($conn, $sql);
+
+		// Display the details of the case
+		if (mysqli_num_rows($result) > 0) {
+			while($row = mysqli_fetch_assoc($result)) {
+				echo "<p><strong style="font-size: large; color: bisque;">Case Name: </strong>" . $row["case_name"] . "</p>";
+				echo "<p><strong style="font-size: large; color: bisque;">Case Type: </strong>" . $row["case_type"] . "</p>";
+				echo "<p><strong style="font-size: large; color: bisque;">Victim Name: </strong>" . $row["victim_name"] . "</p>";
+				echo "<p><strong style="font-size: large; color: bisque;">Accused Name: </strong>" . $row["accused_name"] . "</p>";
+				echo "<p><strong style="font-size: large; color: bisque;">Place of the Crime: </strong>" . $row["place_of_crime"] . "</p>";
+				echo "<p><strong style="font-size: large; color: bisque;">Date: </strong>" . $row["date"] . "</p>";
+				echo "<p><strong style="font-size: large; color: bisque;">Time: </strong>" . $row["time"] . "</p>";
+				echo "<p><strong style="font-size: large; color: bisque;">Suspects: </strong>" . $row["suspects"] . "</p>";
+				echo "<p><strong style="font-size: large; color: bisque;">Evidence: </strong>" . $row["evidence"] . "</p>";
+				echo "<p><strong style="font-size: large; color: bisque;">Culprit: </strong>" . $row["culprit"] . "</p>";
+				echo "<img src='" . $row["victim_image"] . "'><br>";
+				echo "<img src='" . $row["accused_image"] . "'><br>";
+				echo "<img src='" . $row["culprit_image"] . "'><br>";
+			}
+		} else {
+			echo "No results found.";
+		}
+
+		// Close the database connection
+		mysqli_close($conn);
+	?>
+	<br>
+    <div class="adv">
+		<a href="police.php" style="--clr:bisque;"><span>Back to Police Officials Page</span><i></i></a>
+    </div>
+</body>
+</html>
